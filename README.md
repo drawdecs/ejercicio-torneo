@@ -1,2 +1,2 @@
 # ejercicio-torneo
-Ejercicio
+Ejercicio de torneo develop 
