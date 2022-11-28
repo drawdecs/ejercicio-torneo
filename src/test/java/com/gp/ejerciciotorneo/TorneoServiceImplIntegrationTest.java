@@ -1,15 +1,12 @@
 package com.gp.ejerciciotorneo;
 
 import com.gp.ejerciciotorneo.enumerator.TipoTorneoEnum;
-import com.gp.ejerciciotorneo.model.domain.Jugador;
-import com.gp.ejerciciotorneo.model.domain.Torneo;
 import com.gp.ejerciciotorneo.model.dto.JugadorDTO;
 import com.gp.ejerciciotorneo.model.dto.TorneoDTO;
 import com.gp.ejerciciotorneo.repository.torneo.JugadorRepository;
 import com.gp.ejerciciotorneo.repository.torneo.TorneoRepository;
 import com.gp.ejerciciotorneo.service.TorneoService;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest
 public class TorneoServiceImplIntegrationTest {
@@ -35,18 +30,6 @@ public class TorneoServiceImplIntegrationTest {
     @MockBean
     private JugadorRepository jugadorRepository;
 
-    /*@BeforeAll
-    public void setUp() {
-
-        Torneo torneo = new Torneo();
-
-        when(torneoRepository.save(torneo))
-                .thenReturn(torneo);
-
-        when(jugadorRepository.save(new Jugador()))
-                .thenReturn(new Jugador());
-    }*/
-
     @Test
     public void whenValid_thenGanadorNotNull() {
         TorneoDTO torneoDTO = new TorneoDTO();
@@ -55,27 +38,27 @@ public class TorneoServiceImplIntegrationTest {
         List<JugadorDTO> listaJugadores = new ArrayList<>();
         JugadorDTO jugador1 = new JugadorDTO();
         jugador1.setNombre("Juan");
-        jugador1.setFuerza(new Double("15"));
-        jugador1.setHabilidad(new Double("50"));
-        jugador1.setVelocidaddesplazamiento(new Double("5"));
+        jugador1.setFuerza(15.0);
+        jugador1.setHabilidad(50.0);
+        jugador1.setVelocidaddesplazamiento(5.0);
         jugador1.setSexo(TipoTorneoEnum.MASCULINO);
         JugadorDTO jugador2 = new JugadorDTO();
         jugador2.setNombre("Luis");
-        jugador2.setFuerza(new Double("1"));
-        jugador2.setHabilidad(new Double("10"));
-        jugador2.setVelocidaddesplazamiento(new Double("1"));
+        jugador2.setFuerza(1.0);
+        jugador2.setHabilidad(10.0);
+        jugador2.setVelocidaddesplazamiento(1.0);
         jugador2.setSexo(TipoTorneoEnum.MASCULINO);
         JugadorDTO jugador3 = new JugadorDTO();
         jugador3.setNombre("Jose");
-        jugador3.setFuerza(new Double("1"));
-        jugador3.setHabilidad(new Double("18"));
-        jugador3.setVelocidaddesplazamiento(new Double("1"));
+        jugador3.setFuerza(1.0);
+        jugador3.setHabilidad(18.0);
+        jugador3.setVelocidaddesplazamiento(1.0);
         jugador3.setSexo(TipoTorneoEnum.MASCULINO);
         JugadorDTO jugador4 = new JugadorDTO();
         jugador4.setNombre("Manuel");
-        jugador4.setFuerza(new Double("1"));
-        jugador4.setHabilidad(new Double("18"));
-        jugador4.setVelocidaddesplazamiento(new Double("30"));
+        jugador4.setFuerza(1.0);
+        jugador4.setHabilidad(18.0);
+        jugador4.setVelocidaddesplazamiento(30.0);
         jugador4.setSexo(TipoTorneoEnum.MASCULINO);
         listaJugadores.add(jugador1);
         listaJugadores.add(jugador2);
@@ -96,9 +79,9 @@ public class TorneoServiceImplIntegrationTest {
         List<JugadorDTO> listaJugadores = new ArrayList<>();
         JugadorDTO jugador1 = new JugadorDTO();
         jugador1.setNombre("Juan");
-        jugador1.setFuerza(new Double("15"));
-        jugador1.setHabilidad(new Double("50"));
-        jugador1.setVelocidaddesplazamiento(new Double("5"));
+        jugador1.setFuerza(15.0);
+        jugador1.setHabilidad(50.0);
+        jugador1.setVelocidaddesplazamiento(5.0);
         jugador1.setSexo(TipoTorneoEnum.MASCULINO);
         listaJugadores.add(jugador1);
         torneoDTO.setJugadores(listaJugadores);
@@ -114,15 +97,15 @@ public class TorneoServiceImplIntegrationTest {
         List<JugadorDTO> listaJugadores = new ArrayList<>();
         JugadorDTO jugador1 = new JugadorDTO();
         jugador1.setNombre("Juan");
-        jugador1.setFuerza(new Double("15"));
-        jugador1.setHabilidad(new Double("50"));
-        jugador1.setVelocidaddesplazamiento(new Double("5"));
+        jugador1.setFuerza(15.0);
+        jugador1.setHabilidad(50.0);
+        jugador1.setVelocidaddesplazamiento(5.0);
         jugador1.setSexo(TipoTorneoEnum.MASCULINO);
         JugadorDTO jugador2 = new JugadorDTO();
         jugador2.setNombre("Luis");
-        jugador2.setFuerza(new Double("1"));
-        jugador2.setHabilidad(new Double("10"));
-        jugador2.setVelocidaddesplazamiento(new Double("1"));
+        jugador2.setFuerza(1.0);
+        jugador2.setHabilidad(10.0);
+        jugador2.setVelocidaddesplazamiento(1.0);
         jugador2.setSexo(TipoTorneoEnum.FEMENINO);
         listaJugadores.add(jugador1);
         listaJugadores.add(jugador2);

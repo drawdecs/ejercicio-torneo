@@ -84,7 +84,7 @@ public class TorneoServiceImpl implements TorneoService {
 
     private JugadorDTO simularGanador(EnfrentamientoDTO eDTO,Double suerte) {
         Random random = new Random();
-        Double jugador1=new Double(0),jugador2=new Double(0);
+        double jugador1=0,jugador2=0;
         if(suerte !=null && suerte>=0 && suerte <=100){
             jugador1 = random.nextInt(100)*suerte;
             jugador2 = random.nextInt(100)*suerte;

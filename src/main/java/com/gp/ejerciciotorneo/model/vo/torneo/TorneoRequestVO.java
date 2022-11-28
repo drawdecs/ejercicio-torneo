@@ -3,9 +3,7 @@ package com.gp.ejerciciotorneo.model.vo.torneo;
 import com.gp.ejerciciotorneo.enumerator.TipoTorneoEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import org.springframework.validation.annotation.Validated;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
