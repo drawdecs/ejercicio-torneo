@@ -8,7 +8,9 @@ public class NumeroUtils {
      */
     public static boolean esPotenciaDeDos(int numero){
 
+        if(numero<=1) {
+            return false;
+        }
         return (numero & (numero - 1)) == 0;
-
     }
 }

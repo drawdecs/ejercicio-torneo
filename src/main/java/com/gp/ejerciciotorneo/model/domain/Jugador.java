@@ -1,5 +1,6 @@
 package com.gp.ejerciciotorneo.model.domain;
 
+import com.gp.ejerciciotorneo.enumerator.TipoTorneoEnum;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -20,6 +21,10 @@ public class Jugador {
     @Column(name = "idjugador")
     private Integer idjugador;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    TipoTorneoEnum sexo;
+
     @Column
     String nombre;
 
@@ -29,5 +34,14 @@ public class Jugador {
     @JoinColumn(name = "idtorneo", referencedColumnName = "idtorneo")
     @ManyToOne(fetch = FetchType.LAZY)
     private Torneo idtorneo;
+
+    @Column
+    private Double tiemporeaccion;
+
+    @Column
+    private Double fuerza;
+
+    @Column
+    private Double velocidaddesplazamiento;
 
 }
