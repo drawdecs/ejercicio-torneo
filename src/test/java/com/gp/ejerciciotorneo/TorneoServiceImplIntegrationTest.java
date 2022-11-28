@@ -8,23 +8,21 @@ import com.gp.ejerciciotorneo.model.dto.TorneoDTO;
 import com.gp.ejerciciotorneo.repository.torneo.JugadorRepository;
 import com.gp.ejerciciotorneo.repository.torneo.TorneoRepository;
 import com.gp.ejerciciotorneo.service.TorneoService;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.validation.ValidationException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class TorneoServiceImplIntegrationTest {
 
@@ -37,7 +35,7 @@ public class TorneoServiceImplIntegrationTest {
     @MockBean
     private JugadorRepository jugadorRepository;
 
-    @Before
+    /*@BeforeAll
     public void setUp() {
 
         Torneo torneo = new Torneo();
@@ -47,7 +45,7 @@ public class TorneoServiceImplIntegrationTest {
 
         when(jugadorRepository.save(new Jugador()))
                 .thenReturn(new Jugador());
-    }
+    }*/
 
     @Test
     public void whenValid_thenGanadorNotNull() {
@@ -90,7 +88,7 @@ public class TorneoServiceImplIntegrationTest {
         assertNotNull(ganador);
     }
 
-    @Test(expected = ValidationException.class)
+    @Test
     public void whenNumeroJugadoresNotValid_thenThrows() {
         TorneoDTO torneoDTO = new TorneoDTO();
         torneoDTO.setNombre("Torneo");
@@ -104,10 +102,11 @@ public class TorneoServiceImplIntegrationTest {
         jugador1.setSexo(TipoTorneoEnum.MASCULINO);
         listaJugadores.add(jugador1);
         torneoDTO.setJugadores(listaJugadores);
-        given(torneoService.simularTorneo(torneoDTO)).willThrow(ValidationException.class);
+        Assertions.assertThrows(ValidationException.class,()->torneoService.simularTorneo(torneoDTO));
+
     }
 
-    @Test(expected = ValidationException.class)
+    @Test
     public void whenTipoJugadorNotValid_thenThrow() {
         TorneoDTO torneoDTO = new TorneoDTO();
         torneoDTO.setNombre("Torneo");
@@ -128,7 +127,7 @@ public class TorneoServiceImplIntegrationTest {
         listaJugadores.add(jugador1);
         listaJugadores.add(jugador2);
         torneoDTO.setJugadores(listaJugadores);
-        given(torneoService.simularTorneo(torneoDTO)).willThrow(ValidationException.class);
+        Assertions.assertThrows(ValidationException.class,()->torneoService.simularTorneo(torneoDTO));
 
     }
 }

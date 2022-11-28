@@ -11,6 +11,8 @@ import com.gp.ejerciciotorneo.model.mapper.dtoentity.TorneoMapper;
 import com.gp.ejerciciotorneo.repository.torneo.JugadorRepository;
 import com.gp.ejerciciotorneo.repository.torneo.TorneoRepository;
 import com.gp.ejerciciotorneo.service.TorneoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,7 @@ import static com.gp.ejerciciotorneo.util.NumeroUtils.esPotenciaDeDos;
 
 @Service
 public class TorneoServiceImpl implements TorneoService {
-
+    private static final Logger logger = LoggerFactory.getLogger(TorneoServiceImpl.class.getName());
     @Autowired
     private TorneoRepository torneoRepository;
 
@@ -117,7 +119,9 @@ public class TorneoServiceImpl implements TorneoService {
     }
 
     private void validateTorneo(TorneoDTO torneoDTO){
-        if (!esPotenciaDeDos(torneoDTO.getJugadores().size())){
+        logger.info("torneo {}",torneoDTO);
+        boolean espotencia = esPotenciaDeDos(torneoDTO.getJugadores().size());
+        if (!espotencia){
             throw new ValidationException("El numero de Jugadores debe ser potencia de 2");
         }
         if(!torneoDTO.getJugadores().stream().allMatch(o -> o.getSexo().equals(torneoDTO.getTipo()))){

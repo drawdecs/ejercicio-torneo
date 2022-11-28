@@ -7,7 +7,7 @@ import com.gp.ejerciciotorneo.model.vo.torneo.TorneoRequestVO;
 import com.gp.ejerciciotorneo.model.vo.torneo.TorneoResponseVO;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring",uses = {JugadorVO.class,TipoTorneoEnum.class,Double.class })
+@Mapper(componentModel = "spring",uses = {JugadorVO.class,TipoTorneoEnum.class,Double.class  })
 public interface TorneoMapperVODTO {
     TorneoResponseVO toVO(TorneoDTO source);
     TorneoDTO toDto(TorneoRequestVO target);
